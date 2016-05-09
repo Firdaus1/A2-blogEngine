@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+Some title
+{% endblock %}
+{% block content %}
+ {% if session.auth_user %}
+      {# authenticated users can add animals #}
+     <a href="/"><button type="button" class = "pure-button pure-button-primary">Home Page</button></a><br>
+    <h2>Add a new blog post</h2>
+     {% if check == 0 %}
+         <p class="error">No input in the content! Try again.</p>
+         {% endif %}
+    <form action="/addBlog" method="POST" class="pure-form">
+    {# include CSRF token as hidden form field - it will be included
+       in POST data. #}
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+    <label>Blog title: <input type="text" name="title"></label><br>
+    <label>Content: <textarea type="text" name="content"></textarea></label><br>
+    <button type="submit" class="pure-button pure-button-primary">Add</button>
+    </form>
+
+    {% else %}
+      {# all others can log in #}
+    <p><a href="/login">Log in</a></p>
+    {% endif %}
+{% endblock %}

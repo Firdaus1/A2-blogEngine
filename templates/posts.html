@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class = "blog-index">
+      <article>
+          <a href="/"><button type="button" class = "pure-button pure-button-primary">Home Page</button></a><br>
+            <em>Title:</em> <h1>{{ tempPost.title }}</h1>
+            <em>Content:</em> <h1>{{ content }}</h1>
+              {# authenticated users can add animals #}
+            <form action="/removeBlog" method="POST" class="pure-form">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+            {# include CSRF token as hidden form field - it will be included
+               in POST data. #}
+            <input type="hidden" name="id" value="{{ pid }}">
+            <button type="submit" class="pure-button pure-button-primary">remove</button>
+            </form>
+      </article>
+    </div>
+{% endblock %}

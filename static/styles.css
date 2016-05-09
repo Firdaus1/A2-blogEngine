@@ -1,0 +1,36 @@
+html {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13pt;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+h2 {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.error {
+    color: #FF6666;
+}
+
+.pure-button-primary {
+    background-color: #003b99;
+
+}
+
+.sidebar div{
+    margin-left: 1em;
+}
+
+@media screen and (min-width: 48em) {
+    .sidebar h1 {
+        text-align: left;
+    }
+}
+
+.blog-index article h1 {
+    font-size: 1.1rem;
+}

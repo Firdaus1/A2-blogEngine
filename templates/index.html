@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+Some title
+{% endblock %}
+{% block content %}
+    {% if session.auth_user %}
+        <a href="/addBlogButton"><button type="button" class = "pure-button pure-button-primary">Create a new blog!</button></a>
+    {% endif %}
+        <br><br><h2>Recent posts:</h2>
+        {% for blog in blogs | reverse %}
+            <a href="posts/{{ loop.index - 1 }}">{{ blog.title }}</a><br>
+        {% endfor %}
+        <br>
+
+        {% if (CurrentPage - 5 >= 0)%}
+       <a href="/{{ CurrentPage - 5 }}"><button type="button" class = "pure-button pure-button-primary">Previous</button></a>
+        {% endif %}
+        {% if (CurrentPage + 5) < Length %}
+       <a href="/{{ CurrentPage + 5 }}"><button type="button" class = "pure-button pure-button-primary">Next</button></a>
+
+{% endif %}
+{% endblock %}
